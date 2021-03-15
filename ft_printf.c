@@ -1,39 +1,37 @@
 #include "ft_printf.h"
 #include "stdio.h"
 
-void ft_putchar(char c);
-// %がでてくるまで文字列の出力
 int ft_printf(const char *fmt, ...)
 {
+	int output_count;
 	va_list	ap;
     char *current;
 
-	current = fmt;
+	output_count = 0;
+	current = (char *)fmt;
 	va_start(ap, fmt);
 	while(*current)
 	{
 		if (*current == '%')
 		{
-			ft_proc_percent(&current);
+			output_count += ft_proc_percent(&current, ap);
 		}
 		else
+		{
 			ft_putchar(*current);
+			output_count++;
+		}
 		current++;
-	}
-	return 1;
-}
-
-void ft_putchar(char c)
-{
-	write(1, &c, 1);
+	} 
+	return output_count;
 }
 
 t_format init_format()
 {
 	t_format format;
 
-	format.flag_minus = -1;
-	format.flag_zero = -1;
+	format.flag_minus = 0;
+	format.flag_zero = 0;
 	format.field = -1;
 	format.precision = -1;
 	format.type = '\0';
@@ -41,7 +39,7 @@ t_format init_format()
 	return format;
 }
 
-void ft_proc_percent(char **fmt)
+int ft_proc_percent(char **fmt, va_list ap)
 {
 	t_format format;
 	
@@ -63,6 +61,11 @@ void ft_proc_percent(char **fmt)
 		format.field = ft_atoi(*fmt);
 	while(ft_isdigit(**fmt))
         (*fmt)++;
+	if (**fmt == '*')
+	{
+		format.field = va_arg(ap, int);
+		(*fmt)++;
+	}
     // fieldの取得完了
     
 	// presicionの取得開始
@@ -73,53 +76,74 @@ void ft_proc_percent(char **fmt)
 			format.precision = ft_atoi(*fmt);
 		while(ft_isdigit(**fmt))
 			(*fmt)++;
+		if (**fmt == '*')
+		{
+			format.precision= va_arg(ap, int);
+			(*fmt)++;
+		}
 	}
 	// presicionの取得完了
 
-	printf("format.flag_minus = %d\n", format.flag_minus);
-	printf("format.field = %d\n", format.field);
-	printf("format.precision = %d\n", format.precision);
+	// typeの取得開始
+	format.type = ft_strchr("cspdiuxX%", **fmt) ? **fmt : '\0';
+	// typeの取得完了
+
+	return ft_output(format, ap);
 }
 
-char	*ft_strchr(const char *s, int c)
+int	ft_output(t_format format, va_list ap)
 {
-	char *str;
+	int output_count;
+	char *input_str;
+	int	input_num;
 
-	str = (char *)s;
-	while (1)
+	output_count = 0;
+
+	if (format.type == 's')
 	{
-		if (*str == (char)c)
-			return (str);
-		if (*str == 0)
-			return (NULL);
-		str++;
+		input_str = (char *)va_arg(ap, char *);
+		ft_putstr(input_str);
 	}
-}
-
-int	ft_atoi(const char *str)
-{
-	int				sign;
-	unsigned int	n;
-
-	sign = *str == '-' ? -1 : 1;
-	if (*str == '-' || *str == '+')
-		str++;
-	n = 0;
-	while (ft_isdigit(*str))
+	else if (format.type == 'd' || format.type == 'i' || format.type == 'u')
 	{
-		if (sign == 1 && ((unsigned int)10 * n + (*str - '0')) > 2147483647)
-			return (-1);
-		if (sign == -1 && ((unsigned int)10 * n + (*str - '0')) > 2147483648)
-			return (0);
-		n = 10 * n + (*str - '0');
-		str++;
+		input_num = (int)va_arg(ap, int);
+		// todo putnbrのunsigned int対応
+		ft_putnbr(input_num);
 	}
-	return (sign * n);
+	else if (format.type == 'c')
+	{
+		return ft_output_char(format, ap);
+	}
+	else if (format.type == 'p')
+	{}
+	else if (format.type == 'x')
+	{}
+	else if (format.type == 'X')
+	{}
+	else if (format.type == '%')
+	{
+		ft_putchar('%');
+		return 1;
+	}
+	return 0;
 }
 
-int	ft_isdigit(int c)
+int ft_output_char(t_format format, va_list ap)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	char input;
+
+	input = (char)va_arg(ap, int);
+	if (!format.flag_minus && format.field > 2)
+		output_spaces(format.field - 1);
+	ft_putchar(input);
+	if (format.flag_minus && format.field > 2)
+		output_spaces(format.field - 1);
+	return format.field > 1 ? format.field : 1;
+}
+
+int output_spaces(int num)
+{
+	while (num --)
+		ft_putchar(' ');
+	return num;
 }

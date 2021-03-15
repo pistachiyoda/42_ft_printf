@@ -16,6 +16,13 @@ typedef struct s_format
 int	ft_isdigit(int c);
 int	ft_atoi(const char *str);
 char	*ft_strchr(const char *s, int c);
-void ft_proc_percent(char **fmt);
+void ft_proc_percent(char **fmt, va_list ap);
 void ft_putchar(char c);
+int	ft_isalpha(int c);
+char	*ft_strchr(const char *s, int c);
+void	ft_output(t_format format, va_list ap);
+void	ft_output_char(t_format format, va_list ap);
+void	output_spaces(int num);
+void	ft_putstr(char *s);
+void		ft_putnbr(int n);
 #endif
