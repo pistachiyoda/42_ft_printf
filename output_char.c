@@ -14,17 +14,3 @@ int ft_output_char(t_format format, va_list ap)
 		output_spaces(format.field - 1);
 	return (format.field > 1 ? format.field : 1);
 }
-
-int output_spaces(int num)
-{
-	while (num--)
-		ft_putchar(' ');
-	return (num);
-}
-
-int output_zeros(int num)
-{
-	while (num--)
-		ft_putchar('0');
-	return (num);
-}
