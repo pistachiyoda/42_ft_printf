@@ -1,6 +1,5 @@
 #include "ft_printf.h"
 
-// flagの取得
 void proc_flags(char **fmt, t_format *format)
 {
 	while(**fmt == '0' || **fmt == '-')
