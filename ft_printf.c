@@ -53,16 +53,12 @@ int ft_proc_percent(char **fmt, va_list ap)
 int	ft_output(t_format format, va_list ap)
 {
 	int output_count;
-	char *input_str;
 	int	input_num;
 
 	output_count = 0;
 
 	if (format.type == 's')
-	{
-		input_str = (char *)va_arg(ap, char *);
-		ft_putstr(input_str);
-	}
+		return (output_string(format, ap));
 	else if (format.type == 'd' || format.type == 'i' || format.type == 'u')
 	{
 		input_num = (int)va_arg(ap, int);

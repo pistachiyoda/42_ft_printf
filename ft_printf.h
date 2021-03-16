@@ -29,4 +29,7 @@ void proc_flags(char **fmt, t_format *format);
 void proc_field(char **fmt, t_format *format, va_list ap);
 void proc_precision(char **fmt, t_format *format, va_list ap);
 int output_zeros(int num);
+int	output_string(t_format format, va_list ap);
+size_t	ft_strlen(const char *str);
+void	ft_putstr_n(char *s, int len);
 #endif

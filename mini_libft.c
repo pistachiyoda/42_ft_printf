@@ -61,6 +61,19 @@ void	ft_putstr(char *s)
 	}
 }
 
+void	ft_putstr_n(char *s, int len)
+{
+	if (s == NULL)
+		return ;
+	while (len--)
+	{
+		if (*s == '\0')
+			return ;
+		ft_putchar(*s);
+		s++;
+	}
+}
+
 static void	rev_str(char *str, int i)
 {
 	while (i > -1)
@@ -95,4 +108,19 @@ void		ft_putnbr(int n)
 		i++;
 	}
 	rev_str(ret, i - 1);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t cnt;
+
+	cnt = 0;
+	while (1)
+	{
+		if (*str == '\0')
+			break ;
+		str++;
+		cnt++;
+	}
+	return (cnt);
 }
