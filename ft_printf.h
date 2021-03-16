@@ -28,4 +28,5 @@ void		ft_putnbr(int n);
 void proc_flags(char **fmt, t_format *format);
 void proc_field(char **fmt, t_format *format, va_list ap);
 void proc_precision(char **fmt, t_format *format, va_list ap);
+int output_zeros(int num);
 #endif
