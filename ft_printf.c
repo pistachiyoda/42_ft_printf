@@ -49,3 +49,38 @@ int ft_proc_percent(char **fmt, va_list ap)
 	format.type = ft_strchr("cspdiuxX%", **fmt) ? **fmt : '\0';
 	return (ft_output(format, ap));
 }
+
+int	ft_output(t_format format, va_list ap)
+{
+	int output_count;
+	char *input_str;
+	int	input_num;
+
+	output_count = 0;
+
+	if (format.type == 's')
+	{
+		input_str = (char *)va_arg(ap, char *);
+		ft_putstr(input_str);
+	}
+	else if (format.type == 'd' || format.type == 'i' || format.type == 'u')
+	{
+		input_num = (int)va_arg(ap, int);
+		// todo putnbrのunsigned int対応
+		ft_putnbr(input_num);
+	}
+	else if (format.type == 'c')
+		return ft_output_char(format, ap);
+	else if (format.type == 'p')
+	{}
+	else if (format.type == 'x')
+	{}
+	else if (format.type == 'X')
+	{}
+	else if (format.type == '%')
+	{
+		ft_putchar('%');
+		return 1;
+	}
+	return 0;
+}
