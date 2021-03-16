@@ -1,5 +1,6 @@
 #include "ft_printf.h"
-
+// todo
+// 出力文字数を計算して返す
 int	output_string(t_format format, va_list ap)
 {
 	char *input_str;
@@ -10,7 +11,7 @@ int	output_string(t_format format, va_list ap)
 
 	if (!format.flag_minus && !format.flag_zero && format.field)
 		output_spaces(format.field - strlen);
-	if (format.flag_zero && format.field)
+	if (!format.flag_minus && format.flag_zero && format.field)
 		output_zeros(format.field - strlen);
 	ft_putstr_n(input_str, format.precision);
 	if (format.flag_minus)
