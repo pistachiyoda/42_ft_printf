@@ -32,4 +32,6 @@ int output_zeros(int num);
 int	output_string(t_format format, va_list ap);
 size_t	ft_strlen(const char *str);
 void	ft_putstr_n(char *s, int len);
+int output_hexadecimal(t_format format, va_list ap);
+void print_hex(t_format format, unsigned int decimal, int digit);
 #endif
