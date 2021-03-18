@@ -68,7 +68,7 @@ int	ft_output(t_format format, va_list ap)
 	else if (format.type == 'c')
 		return ft_output_char(format, ap);
 	else if (format.type == 'p')
-	{}
+		output_pointer(format, ap);
 	else if (format.type == 'x' || format.type == 'X')
 		output_hexadecimal(format, ap);
 	else if (format.type == '%')

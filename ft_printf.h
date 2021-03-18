@@ -34,4 +34,6 @@ size_t	ft_strlen(const char *str);
 void	ft_putstr_n(char *s, int len);
 int output_hexadecimal(t_format format, va_list ap);
 void print_hex(t_format format, unsigned int decimal, int digit);
+void print_pointer_hex(t_format format, unsigned long long decimal, int digit);
+int output_pointer(t_format format, va_list ap);
 #endif
