@@ -5,7 +5,6 @@ int output_hexadecimal(t_format format, va_list ap)
     unsigned int input_num;
     int digit;
 	int decimal;
-	char *hex_str;
 
     input_num = (unsigned int)va_arg(ap, unsigned int);
     digit = 0;

@@ -6,7 +6,6 @@ int output_pointer(t_format format, va_list ap)
     unsigned long long input_num;
     int digit;
 	unsigned long long decimal;
-	char *hex_str;
 
     input_num = (unsigned long long)va_arg(ap, unsigned long long);
     digit = 0;
