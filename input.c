@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include <stdio.h>
 
 void proc_flags(char **fmt, t_format *format)
 {
@@ -27,17 +28,20 @@ void proc_field(char **fmt, t_format *format, va_list ap)
 
 void proc_precision(char **fmt, t_format *format, va_list ap)
 {
-    if (**fmt == '.')
+    if (**fmt != '.')
+		return;
+	(*fmt)++;
+	if (ft_isdigit(**fmt))
 	{
-		(*fmt)++;
-		if (ft_isdigit(**fmt))
-			format->precision = ft_atoi(*fmt);
+		format->precision = ft_atoi(*fmt);
 		while(ft_isdigit(**fmt))
 			(*fmt)++;
-		if (**fmt == '*')
-		{
-			format->precision= va_arg(ap, int);
-			(*fmt)++;
-		}
 	}
+	else if (**fmt == '*')
+	{
+		format->precision = va_arg(ap, int);
+		(*fmt)++;
+	}
+	else
+		format->dot_only = 1;
 }

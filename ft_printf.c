@@ -31,6 +31,7 @@ t_format init_format()
 	format.flag_minus = 0;
 	format.flag_zero = 0;
 	format.field = -1;
+	format.dot_only = 0;
 	format.precision = -1;
 	format.type = '\0';
 

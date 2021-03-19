@@ -9,6 +9,7 @@ typedef struct s_format
 	int flag_minus;
 	int	flag_zero;
 	int field;
+	int	dot_only;
 	int	precision;
 	char type;
 }				t_format;
