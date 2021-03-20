@@ -34,7 +34,7 @@ int	output_string(t_format format, va_list ap);
 size_t	ft_strlen(const char *str);
 void	ft_putstr_n(char *s, int len);
 int output_hexadecimal(t_format format, va_list ap);
-int print_hex(t_format format, unsigned int decimal, int digit);
+int	print_hex(t_format format, unsigned int decimal, int hex_digit, char *hex_num);
 void print_pointer_hex(t_format format, unsigned long long decimal, int digit);
 int output_pointer(t_format format, va_list ap);
 int proc_total_digit(t_format format, int hex_digit);
