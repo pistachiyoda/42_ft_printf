@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 15:21:12 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/21 16:44:53 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/21 22:39:48 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	output_pointer(t_format format, va_list ap)
 	input_num = (unsigned long long)va_arg(ap, unsigned long long);
 	hex_num = "0123456789abcdef";
 	decimal = input_num;
-	hex_digit = calc_hex_digit(decimal, input_num);
+	hex_digit = calc_hex_digit(decimal);
 	return (print_pointer_hex(format, input_num, hex_digit + 2, hex_num));
 }
 

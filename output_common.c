@@ -18,17 +18,17 @@ int output_zeros(int num)
 	return (num);
 }
 
-int	proc_total_digit(t_format format, int hex_digit)
+int	proc_total_digit(t_format format, int num_digit)
 {
 	int total_digit;
 
-	total_digit = format.field >= hex_digit ? format.field : hex_digit;
+	total_digit = format.field >= num_digit ? format.field : num_digit;
 	if (format.precision > total_digit)
 		return (format.precision);
 	return (total_digit);
 }
 
-int	proc_zero_digit(t_format format, int total_digit, int hex_digit)
+int	proc_zero_digit(t_format format, int total_digit, int num_digit)
 {
 	int zero_digit;
 
@@ -36,14 +36,14 @@ int	proc_zero_digit(t_format format, int total_digit, int hex_digit)
 
 	if (format.flag_zero && format.precision == -1)
 	{
-		zero_digit += (total_digit - hex_digit);
+		zero_digit += (total_digit - num_digit);
 		return (zero_digit);
 	}
 	else
 	{
-		if (format.precision > hex_digit)
+		if (format.precision > num_digit)
 		{
-			zero_digit += (format.precision - hex_digit);
+			zero_digit += (format.precision - num_digit);
 			return (zero_digit);
 		}
 	}
@@ -60,18 +60,18 @@ int	proc_empty(t_format format)
 	return (0);
 }
 
-int calc_hex_digit(unsigned long long decimal, unsigned long long input_num)
+int calc_hex_digit(unsigned long long decimal)
 {
 	int hex_digit;
 
+	if (decimal == 0)
+		return (1);
 	hex_digit = 0;
 	while (decimal > 0)
 	{
 		decimal /= 16;
 		hex_digit++;
 	}
-	if (input_num == 0)
-		hex_digit += 1;
 	return (hex_digit);
 }
 
@@ -90,4 +90,9 @@ int set_hex_str(unsigned long long decimal, char *hex_num, char *hex)
 			break ;
 	}
 	return (i);
+}
+
+int max(int a, int b)
+{
+	return (a > b ? a : b);
 }

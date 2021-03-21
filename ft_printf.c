@@ -53,19 +53,10 @@ int ft_proc_percent(char **fmt, va_list ap)
 
 int	ft_output(t_format format, va_list ap)
 {
-	int output_count;
-	int	input_num;
-
-	output_count = 0;
-
 	if (format.type == 's')
 		return (output_string(format, ap));
 	else if (format.type == 'd' || format.type == 'i' || format.type == 'u')
-	{
-		input_num = (int)va_arg(ap, int);
-		// todo putnbrのunsigned int対応
-		ft_putnbr(input_num);
-	}
+		return output_integer(format, ap);
 	else if (format.type == 'c')
 		return ft_output_char(format, ap);
 	else if (format.type == 'p')

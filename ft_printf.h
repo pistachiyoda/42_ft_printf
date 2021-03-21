@@ -33,6 +33,7 @@ int output_zeros(int num);
 int	output_string(t_format format, va_list ap);
 size_t	ft_strlen(const char *str);
 void	ft_putstr_n(char *s, int len);
+int output_integer(t_format format, va_list ap);
 int output_hexadecimal(t_format format, va_list ap);
 int	print_hex(t_format format, unsigned int decimal, int hex_digit, char *hex_num);
 int print_pointer_hex(t_format format, unsigned long long decimal, int digit, char *hex_num);
@@ -40,6 +41,7 @@ int output_pointer(t_format format, va_list ap);
 int proc_total_digit(t_format format, int hex_digit);
 int proc_zero_digit(t_format format, int total_digit, int hex_digit);
 int	proc_empty(t_format format);
-int calc_hex_digit(unsigned long long decimal, unsigned long long input_num);
+int calc_hex_digit(unsigned long long decimal);
 int set_hex_str(unsigned long long decimal, char *hex_num, char *hex);
+int max(int a, int b);
 #endif
