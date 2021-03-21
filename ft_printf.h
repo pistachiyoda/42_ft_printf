@@ -40,4 +40,6 @@ int output_pointer(t_format format, va_list ap);
 int proc_total_digit(t_format format, int hex_digit);
 int proc_zero_digit(t_format format, int total_digit, int hex_digit);
 int	proc_empty(t_format format);
+int calc_hex_digit(unsigned long long decimal, unsigned long long input_num);
+int set_hex_str(unsigned long long decimal, char *hex_num, char *hex);
 #endif

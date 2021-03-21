@@ -59,3 +59,35 @@ int	proc_empty(t_format format)
 	}
 	return (0);
 }
+
+int calc_hex_digit(unsigned long long decimal, unsigned long long input_num)
+{
+	int hex_digit;
+
+	hex_digit = 0;
+	while (decimal > 0)
+	{
+		decimal /= 16;
+		hex_digit++;
+	}
+	if (input_num == 0)
+		hex_digit += 1;
+	return (hex_digit);
+}
+
+int set_hex_str(unsigned long long decimal, char *hex_num, char *hex)
+{
+	int		tmp;
+	int		i;
+
+	i = 0;
+	while (decimal >= 0)
+	{
+		tmp = decimal % 16;
+		decimal /= 16;
+		hex[i++] = hex_num[tmp];
+		if (decimal == 0)
+			break ;
+	}
+	return (i);
+}
