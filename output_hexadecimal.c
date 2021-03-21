@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 23:22:18 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/21 15:02:07 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/21 17:27:34 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,7 @@ int	output_hexadecimal(t_format format, va_list ap)
 	hex_num = format.type == 'x' ? "0123456789abcdef" : "0123456789ABCDEF";
 	hex_digit = 0;
 	decimal = input_num;
-	while (decimal > 0)
-	{
-		decimal /= 16;
-		hex_digit++;
-	}
-	if (input_num == 0)
-		hex_digit += 1;
+	hex_digit = calc_hex_digit(decimal, input_num);
 	return (print_hex(format, input_num, hex_digit, hex_num));
 }
 
@@ -38,7 +32,6 @@ int	print_hex(
 	t_format format, unsigned int decimal, int hd, char *hex_num
 )
 {
-	int		tmp;
 	char	hex[10000];
 	int		i;
 	int		td;
@@ -49,15 +42,7 @@ int	print_hex(
 	if (!format.flag_minus && (!format.flag_zero || format.precision != -1))
 		output_spaces(td - hd - proc_zero_digit(format, td, hd));
 	output_zeros(proc_zero_digit(format, td, hd));
-	i = 0;
-	while (decimal >= 0)
-	{
-		tmp = decimal % 16;
-		decimal /= 16;
-		hex[i++] = hex_num[tmp];
-		if (decimal == 0)
-			break ;
-	}
+	i = set_hex_str(decimal, hex_num, hex);
 	while (i-- > 0)
 		ft_putchar(hex[i]);
 	if (format.flag_minus)
