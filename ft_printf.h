@@ -44,4 +44,5 @@ int	proc_empty(t_format format);
 int calc_hex_digit(unsigned long long decimal);
 int set_hex_str(unsigned long long decimal, char *hex_num, char *hex);
 int max(int a, int b);
+int output_percent(t_format format);
 #endif

@@ -64,9 +64,6 @@ int	ft_output(t_format format, va_list ap)
 	else if (format.type == 'x' || format.type == 'X')
 		return (output_hexadecimal(format, ap));
 	else if (format.type == '%')
-	{
-		ft_putchar('%');
-		return 1;
-	}
+		return (output_percent(format));
 	return 0;
 }
