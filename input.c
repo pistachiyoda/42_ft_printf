@@ -22,6 +22,11 @@ void proc_field(char **fmt, t_format *format, va_list ap)
 	if (**fmt == '*')
 	{
 		format->field = va_arg(ap, int);
+		if (format->field < 0)
+		{
+			format->field *= -1;
+			format->flag_minus = 1;
+		}
 		(*fmt)++;
 	}
 }
