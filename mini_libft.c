@@ -110,6 +110,23 @@ void		ft_putnbr(int n)
 	rev_str(ret, i - 1);
 }
 
+void	ft_putunbr(unsigned int n)
+{
+	char	ret[50];
+	unsigned int i;
+
+	if (n == 0)
+		ft_putstr("0");
+	i = 0;
+	while (n)
+	{
+		ret[i] = n % 10 + '0';
+		n /= 10;
+		i++;
+	}
+	rev_str(ret, i - 1);
+}
+
 size_t	ft_strlen(const char *str)
 {
 	size_t cnt;

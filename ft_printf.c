@@ -55,8 +55,10 @@ int	ft_output(t_format format, va_list ap)
 {
 	if (format.type == 's')
 		return (output_string(format, ap));
-	else if (format.type == 'd' || format.type == 'i' || format.type == 'u')
+	else if (format.type == 'd' || format.type == 'i')
 		return output_integer(format, ap);
+	else if (format.type == 'u')
+		return output_u_integer(format, ap);
 	else if (format.type == 'c')
 		return ft_output_char(format, ap);
 	else if (format.type == 'p')

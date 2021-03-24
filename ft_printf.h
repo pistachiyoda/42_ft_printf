@@ -45,4 +45,9 @@ int calc_hex_digit(unsigned long long decimal);
 int set_hex_str(unsigned long long decimal, char *hex_num, char *hex);
 int max(int a, int b);
 int output_percent(t_format format);
+int		output_u_integer(t_format format, va_list ap);
+int		calc_u_decimal_digit(unsigned int decimal);
+int		proc_u_integer_total_digit(t_format format, unsigned int input_num);
+int		proc_u_integer_zero_digit(t_format format, unsigned int input_num);
+void	ft_putunbr(unsigned int n);
 #endif

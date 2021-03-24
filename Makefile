@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-CFILES = ft_printf.c mini_libft.c input.c output_common.c output_integer.c output_char.c output_string.c output_hexadecimal.c output_pointer.c output_percent.c
+CFILES = ft_printf.c mini_libft.c input.c output_common.c output_integer.c output_char.c output_string.c output_hexadecimal.c output_pointer.c output_percent.c output_u_integer.c
 OBJ = $(CFILES:.c=.o)
 all: $(NAME)
 $(NAME): $(OBJ)
