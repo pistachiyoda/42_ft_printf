@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 22:59:13 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/24 23:19:13 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/24 23:34:02 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,12 @@ int		proc_u_integer_zero_digit(t_format format, unsigned int input_num)
 	return (0);
 }
 
-
 int		output_u_integer(t_format format, va_list ap)
 {
-	unsigned int input_num;
-	int total_digit;
-	int decimal_digit;
-	int zero_digit;
+	unsigned int	input_num;
+	int				total_digit;
+	int				decimal_digit;
+	int				zero_digit;
 
 	input_num = va_arg(ap, unsigned int);
 	if ((format.precision == 0 || format.dot_only) && input_num == 0)
