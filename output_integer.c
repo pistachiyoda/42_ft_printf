@@ -6,16 +6,19 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 22:59:13 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/22 01:25:56 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/23 22:57:09 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <limits.h>
 
 int		calc_decimal_digit(int decimal)
 {
 	int digit;
 
+	if (decimal == -2147483648)
+		return (10);
 	if (decimal == 0)
 		return (1);
 	digit = 0;
@@ -61,6 +64,16 @@ int		proc_integer_zero_digit(t_format format, int input_num)
 	return (0);
 }
 
+void	putnbr_without_sign(int input_num)
+{
+	if (input_num == INT_MIN)
+		ft_putstr("2147483648");
+	else if (input_num < 0)
+		ft_putnbr(input_num * -1);
+	else
+		ft_putnbr(input_num);
+}
+
 int		output_integer(t_format format, va_list ap)
 {
 	int input_num;
@@ -81,10 +94,9 @@ int		output_integer(t_format format, va_list ap)
 	if (input_num < 0)
 	{
 		ft_putchar('-');
-		input_num *= -1;
 	}
 	output_zeros(zero_digit);
-	ft_putnbr(input_num);
+	putnbr_without_sign(input_num);
 	if (format.flag_minus)
 		output_spaces(total_digit - decimal_digit - minus_digit - zero_digit);
 	return (total_digit);
