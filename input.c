@@ -1,6 +1,18 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
+int	proc_spaces(char **fmt)
+{
+	if (**fmt != ' ')
+		return (0);
+	while(**fmt == ' ')
+	{
+		(*fmt)++;
+	}
+	ft_putchar(' ');
+	return (1);
+}
+
 void proc_flags(char **fmt, t_format *format)
 {
 	while(**fmt == '0' || **fmt == '-')

@@ -41,14 +41,16 @@ t_format init_format()
 int ft_proc_percent(char **fmt, va_list ap)
 {
 	t_format format;
+	int space;
 	
 	format = init_format();
     (*fmt)++;
+	space = proc_spaces(fmt);
 	proc_flags(fmt, &format);
 	proc_field(fmt, &format, ap);
 	proc_precision(fmt, &format, ap);
 	format.type = ft_strchr("cspdiuxX%", **fmt) ? **fmt : '\0';
-	return (ft_output(format, ap));
+	return (ft_output(format, ap) + space);
 }
 
 int	ft_output(t_format format, va_list ap)
