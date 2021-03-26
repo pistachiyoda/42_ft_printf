@@ -1,38 +1,47 @@
-#include "ft_printf.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/26 15:46:48 by fmai              #+#    #+#             */
+/*   Updated: 2021/03/26 15:51:14 by fmai             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	proc_spaces(char **fmt)
+#include "ft_printf.h"
+
+int		proc_spaces(char **fmt)
 {
 	if (**fmt != ' ')
 		return (0);
-	while(**fmt == ' ')
-	{
+	while (**fmt == ' ')
 		(*fmt)++;
-	}
 	ft_putchar(' ');
 	return (1);
 }
 
-void proc_flags(char **fmt, t_format *format)
+void	proc_flags(char **fmt, t_format *format)
 {
-	while(**fmt == '0' || **fmt == '-')
+	while (**fmt == '0' || **fmt == '-')
 	{
 		if (**fmt == '0')
 			format->flag_zero = 1;
 		if (**fmt == '-')
 			format->flag_minus = 1;
-        (*fmt)++;
+		(*fmt)++;
 	}
 	if (format->flag_minus && format->flag_zero)
 		format->flag_zero = 0;
 }
 
-void proc_field(char **fmt, t_format *format, va_list ap)
+void	proc_field(char **fmt, t_format *format, va_list ap)
 {
 	if (ft_isdigit(**fmt))
 		format->field = ft_atoi(*fmt);
-	while(ft_isdigit(**fmt))
-        (*fmt)++;
+	while (ft_isdigit(**fmt))
+		(*fmt)++;
 	if (**fmt == '*')
 	{
 		format->field = va_arg(ap, int);
@@ -47,15 +56,15 @@ void proc_field(char **fmt, t_format *format, va_list ap)
 		format->flag_zero = 0;
 }
 
-void proc_precision(char **fmt, t_format *format, va_list ap)
+void	proc_precision(char **fmt, t_format *format, va_list ap)
 {
-    if (**fmt != '.')
-		return;
+	if (**fmt != '.')
+		return ;
 	(*fmt)++;
 	if (ft_isdigit(**fmt))
 	{
 		format->precision = ft_atoi(*fmt);
-		while(ft_isdigit(**fmt))
+		while (ft_isdigit(**fmt))
 			(*fmt)++;
 	}
 	else if (**fmt == '*')
