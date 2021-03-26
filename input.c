@@ -11,6 +11,8 @@ void proc_flags(char **fmt, t_format *format)
 			format->flag_minus = 1;
         (*fmt)++;
 	}
+	if (format->flag_minus && format->flag_zero)
+		format->flag_zero = 0;
 }
 
 void proc_field(char **fmt, t_format *format, va_list ap)
@@ -29,6 +31,8 @@ void proc_field(char **fmt, t_format *format, va_list ap)
 		}
 		(*fmt)++;
 	}
+	if (format->flag_minus && format->flag_zero)
+		format->flag_zero = 0;
 }
 
 void proc_precision(char **fmt, t_format *format, va_list ap)
