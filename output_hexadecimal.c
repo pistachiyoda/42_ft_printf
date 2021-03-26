@@ -6,19 +6,18 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 23:22:18 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/21 22:39:58 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/27 00:38:31 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	output_hexadecimal(t_format format, va_list ap)
 {
 	unsigned int	input_num;
 	char			*hex_num;
 	int				hex_digit;
-	int				decimal;
+	unsigned int	decimal;
 
 	input_num = (unsigned int)va_arg(ap, unsigned int);
 	hex_num = format.type == 'x' ? "0123456789abcdef" : "0123456789ABCDEF";
