@@ -1,46 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   output_common.c                                    :+:      :+:    :+:   */
+/*   output_hexa_common.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/26 20:10:06 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/26 20:10:21 by fmai             ###   ########.fr       */
+/*   Created: 2021/03/26 20:09:43 by fmai              #+#    #+#             */
+/*   Updated: 2021/03/26 20:09:56 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		output_spaces(int num)
+int		calc_hex_digit(unsigned long long decimal)
 {
-	if (num <= 0)
-		return (0);
-	while (num--)
-		ft_putchar(' ');
-	return (num);
-}
+	int hex_digit;
 
-int		output_zeros(int num)
-{
-	if (num <= 0)
-		return (0);
-	while (num--)
-		ft_putchar('0');
-	return (num);
-}
-
-int		proc_empty(t_format format)
-{
-	if (format.field >= 0)
+	if (decimal == 0)
+		return (1);
+	hex_digit = 0;
+	while (decimal > 0)
 	{
-		output_spaces(format.field);
-		return (format.field);
+		decimal /= 16;
+		hex_digit++;
 	}
-	return (0);
+	return (hex_digit);
 }
 
-int		max(int a, int b)
+int		set_hex_str(unsigned long long decimal, char *hex_num, char *hex)
 {
-	return (a > b ? a : b);
+	int		tmp;
+	int		i;
+
+	i = 0;
+	while (decimal >= 0)
+	{
+		tmp = decimal % 16;
+		decimal /= 16;
+		hex[i++] = hex_num[tmp];
+		if (decimal == 0)
+			break ;
+	}
+	return (i);
 }
