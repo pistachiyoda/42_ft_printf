@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 19:17:28 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/26 19:25:12 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/27 10:33:33 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,4 @@ int				proc_u_integer_total_digit(
 int				proc_u_integer_zero_digit(
 	t_format format, unsigned int input_num);
 void			ft_putunbr(unsigned int n);
-int				proc_spaces(char **fmt);
 #endif

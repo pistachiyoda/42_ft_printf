@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 17:53:05 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/26 23:55:02 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/27 10:33:18 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,14 @@ t_format	init_format(void)
 int			ft_proc_percent(char **fmt, va_list ap)
 {
 	t_format	format;
-	int			space;
 
 	format = init_format();
 	(*fmt)++;
-	space = proc_spaces(fmt);
 	proc_flags(fmt, &format);
 	proc_field(fmt, &format, ap);
 	proc_precision(fmt, &format, ap);
 	format.type = ft_strchr("cspdiuxX%", **fmt) ? **fmt : '\0';
-	return (ft_output(format, ap) + space);
+	return (ft_output(format, ap));
 }
 
 int			ft_output(t_format format, va_list ap)

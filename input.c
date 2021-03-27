@@ -6,21 +6,11 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:46:48 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/26 15:51:14 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/27 10:33:52 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		proc_spaces(char **fmt)
-{
-	if (**fmt != ' ')
-		return (0);
-	while (**fmt == ' ')
-		(*fmt)++;
-	ft_putchar(' ');
-	return (1);
-}
 
 void	proc_flags(char **fmt, t_format *format)
 {
