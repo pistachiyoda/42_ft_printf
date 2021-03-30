@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 22:59:13 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/29 17:54:52 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/30 16:30:54 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int		output_u_integer(t_format format, va_list ap)
 	if ((format.precision == 0 || format.dot_only) && input_num == 0)
 		return (proc_empty(format));
 	decimal_digit = calc_u_decimal_digit(input_num);
-	total_digit = proc_u_integer_total_digit(format, decimal_digit);
-	zero_digit = proc_u_integer_zero_digit(format, decimal_digit, total_digit);
+	total_digit = proc_total_digit(format, decimal_digit);
+	zero_digit = proc_zero_digit(format, total_digit, decimal_digit);
 	if (!format.flag_minus && (!format.flag_zero || format.precision != -1))
 		output_spaces(total_digit - decimal_digit - zero_digit);
 	output_zeros(zero_digit);
@@ -48,21 +48,4 @@ int		calc_u_decimal_digit(unsigned int decimal)
 		digit++;
 	}
 	return (digit);
-}
-
-int		proc_u_integer_total_digit(t_format format, int decimal_digit)
-{
-	return (max(max(
-		decimal_digit, format.field),
-		format.precision));
-}
-
-int		proc_u_integer_zero_digit(
-	t_format format, int decimal_digit, int total_digit)
-{
-	if (format.flag_zero && format.precision == -1)
-		return (total_digit - decimal_digit);
-	else if (format.precision > decimal_digit)
-		return (format.precision - decimal_digit);
-	return (0);
 }
