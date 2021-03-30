@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 23:01:37 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/30 21:40:16 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/30 23:54:52 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int	output_string(t_format format, va_list ap)
 		input_str = "(null)";
 	str_digit = max_length((int)ft_strlen(input_str), format.precision);
 	total_digit = format.field >= str_digit ? format.field : str_digit;
-	if (!format.flag_minus && format.field)
+	if (!format.flag_minus && !format.flag_zero && format.field)
 		output_spaces(total_digit - str_digit);
+	if (!format.flag_minus && format.flag_zero && format.field)
+		output_zeros(total_digit - str_digit);
 	ft_putstr_n(input_str, str_digit);
 	if (format.flag_minus)
 		output_spaces(total_digit - str_digit);
