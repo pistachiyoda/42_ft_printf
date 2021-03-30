@@ -6,18 +6,11 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 23:01:37 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/19 23:03:58 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/27 12:30:15 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	max_length(int input_str_len, int precision)
-{
-	if (precision < 0)
-		return (input_str_len);
-	return (input_str_len < precision ? input_str_len : precision);
-}
 
 int	output_string(t_format format, va_list ap)
 {
@@ -38,4 +31,11 @@ int	output_string(t_format format, va_list ap)
 	if (format.flag_minus)
 		output_spaces(total_digit - str_digit);
 	return (total_digit);
+}
+
+int	max_length(int input_str_len, int precision)
+{
+	if (precision < 0)
+		return (input_str_len);
+	return (input_str_len < precision ? input_str_len : precision);
 }
