@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 17:53:05 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/27 12:14:19 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/31 00:35:11 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			ft_output(t_format format, va_list ap)
 	else if (format.type == 'u')
 		return (output_u_integer(format, ap));
 	else if (format.type == 'c')
-		return (ft_output_char(format, ap));
+		return (output_char(format, ap));
 	else if (format.type == 'p')
 		return (output_pointer(format, ap));
 	else if (format.type == 'x' || format.type == 'X')

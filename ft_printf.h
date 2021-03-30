@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 19:17:28 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/30 15:50:42 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/31 00:35:11 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int				calc_u_decimal_digit(unsigned int decimal);
 int				proc_u_integer_total_digit(t_format format, int decimal_digit);
 int				proc_u_integer_zero_digit(
 	t_format format, int decimal_digit, int total_digit);
-int				ft_output_char(t_format format, va_list ap);
+int				output_char(t_format format, va_list ap);
 int				output_pointer(t_format format, va_list ap);
 int				output_hexadecimal(t_format format, va_list ap);
 int				print_hex(
