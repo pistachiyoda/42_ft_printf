@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 17:53:05 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/27 10:33:18 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/27 12:14:19 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,6 @@ int			ft_printf(const char *fmt, ...)
 	return (output_count);
 }
 
-t_format	init_format(void)
-{
-	t_format format;
-
-	format.flag_minus = 0;
-	format.flag_zero = 0;
-	format.field = -1;
-	format.dot_only = 0;
-	format.precision = -1;
-	format.type = '\0';
-	return (format);
-}
-
 int			ft_proc_percent(char **fmt, va_list ap)
 {
 	t_format	format;
@@ -59,6 +46,19 @@ int			ft_proc_percent(char **fmt, va_list ap)
 	proc_precision(fmt, &format, ap);
 	format.type = ft_strchr("cspdiuxX%", **fmt) ? **fmt : '\0';
 	return (ft_output(format, ap));
+}
+
+t_format	init_format(void)
+{
+	t_format format;
+
+	format.flag_minus = 0;
+	format.flag_zero = 0;
+	format.field = -1;
+	format.dot_only = 0;
+	format.precision = -1;
+	format.type = '\0';
+	return (format);
 }
 
 int			ft_output(t_format format, va_list ap)
