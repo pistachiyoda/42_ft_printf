@@ -6,12 +6,11 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 22:17:06 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/21 22:17:16 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/29 17:54:22 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int		ft_output_char(t_format format, va_list ap)
 {
