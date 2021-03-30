@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 23:22:18 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/27 00:38:31 by fmai             ###   ########.fr       */
+/*   Updated: 2021/03/30 16:38:41 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	output_hexadecimal(t_format format, va_list ap)
 
 	input_num = (unsigned int)va_arg(ap, unsigned int);
 	hex_num = format.type == 'x' ? "0123456789abcdef" : "0123456789ABCDEF";
-	hex_digit = 0;
 	decimal = input_num;
 	hex_digit = calc_hex_digit(decimal);
 	return (print_hex(format, input_num, hex_digit, hex_num));
@@ -31,7 +30,7 @@ int	print_hex(
 	t_format format, unsigned int decimal, int hd, char *hex_num
 )
 {
-	char	hex[10000];
+	char	hex[100];
 	int		i;
 	int		td;
 
