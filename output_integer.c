@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 22:59:13 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/29 17:25:58 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/01 12:59:42 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		output_integer(t_format format, va_list ap)
 	total_digit = proc_integer_total_digit(format, minus_digit, decimal_digit);
 	zero_digit = proc_integer_zero_digit(
 		format, minus_digit, decimal_digit, total_digit);
-	if (!format.flag_minus && (!format.flag_zero || format.precision != -1))
+	if (!format.flag_minus && (!format.flag_zero || format.precision > -1))
 		output_spaces(total_digit - decimal_digit - minus_digit - zero_digit);
 	if (input_num < 0)
 		ft_putchar('-');
@@ -70,7 +70,7 @@ int		proc_integer_total_digit(
 int		proc_integer_zero_digit(
 	t_format format, int minus_digit, int decimal_digit, int total_digit)
 {
-	if (format.flag_zero && format.precision == -1)
+	if (format.flag_zero && format.precision < 0)
 		return (total_digit - decimal_digit - minus_digit);
 	else if (format.precision > decimal_digit)
 		return (format.precision - decimal_digit);
