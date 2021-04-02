@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 17:53:05 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/31 00:35:11 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/02 09:03:06 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,19 @@ int			ft_proc_percent(char **fmt, va_list ap)
 	(*fmt)++;
 	proc_flags(fmt, &format);
 	proc_field(fmt, &format, ap);
-	proc_precision(fmt, &format, ap);
+	while (!ft_strchr("cspdiuxX%", **fmt))
+	{
+		if (**fmt == '.')
+		{
+			(*fmt)++;
+			proc_precision(fmt, &format, ap);
+		}
+		else
+		{
+			(*fmt)--;
+			return (0);
+		}
+	}
 	format.type = ft_strchr("cspdiuxX%", **fmt) ? **fmt : '\0';
 	return (ft_output(format, ap));
 }

@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:46:48 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/27 10:33:52 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/02 09:02:38 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@ void	proc_field(char **fmt, t_format *format, va_list ap)
 
 void	proc_precision(char **fmt, t_format *format, va_list ap)
 {
-	if (**fmt != '.')
-		return ;
-	(*fmt)++;
 	if (ft_isdigit(**fmt))
 	{
 		format->precision = ft_atoi(*fmt);
