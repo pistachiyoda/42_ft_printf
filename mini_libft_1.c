@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 20:11:11 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/26 20:11:36 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/02 17:27:41 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ char	*ft_strchr(const char *s, int c)
 	str = (char *)s;
 	while (1)
 	{
-		if (*str == (char)c)
-			return (str);
 		if (*str == 0)
 			return (NULL);
+		if (*str == (char)c)
+			return (str);
 		str++;
 	}
 }
