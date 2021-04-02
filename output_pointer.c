@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 15:21:12 by fmai              #+#    #+#             */
-/*   Updated: 2021/04/02 23:32:45 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/03 00:00:19 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	print_pointer_hex(
 	output_zeros(zero_digit);
 	i = set_hex_str(decimal, hex_num, hex);
 	if (decimal == 0 && !(format.dot_only || format.precision == 0))
-			ft_putchar('0');
+		ft_putchar('0');
 	else if (decimal != 0)
 	{
 		while (i-- > 0)
