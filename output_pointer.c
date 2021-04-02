@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 15:21:12 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/21 22:39:48 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/02 23:07:07 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,27 @@ int	output_pointer(t_format format, va_list ap)
 	input_num = (unsigned long long)va_arg(ap, unsigned long long);
 	hex_num = "0123456789abcdef";
 	decimal = input_num;
-	hex_digit = calc_hex_digit(decimal);
-	return (print_pointer_hex(format, input_num, hex_digit + 2, hex_num));
+	if (format.dot_only && decimal == 0)
+		format.flag_zero = 0;
+	hex_digit = format.dot_only && decimal == 0 ? 0 : calc_hex_digit(decimal);
+	return (print_pointer_hex(format, input_num, hex_digit, hex_num));
+}
+
+int	proc_p_total_digit(t_format format, int hex_digit)
+{
+	int total_digit;
+
+	total_digit = max(max(format.field, hex_digit + 2), format.precision + 2);
+	return (total_digit);
+}
+
+int	proc_p_zero_digit(t_format format, int total_digit, int hex_digit)
+{
+	if (format.precision > hex_digit)
+		return (format.precision - hex_digit);
+	else if (format.flag_zero)
+		return (total_digit - 2 - hex_digit);
+	return (0);
 }
 
 int	print_pointer_hex(
@@ -33,19 +52,28 @@ int	print_pointer_hex(
 	char	hex[100];
 	int		i;
 	int		td;
+	int		zero_digit;
 
 	if ((format.precision == 0 || format.dot_only) && decimal == 0)
-		return (proc_empty(format));
-	td = proc_total_digit(format, hd);
-	if (format.field >= hd && !format.flag_minus && format.precision == -1)
-		output_spaces(td - hd);
+		hd = 0;
+	td = proc_p_total_digit(format, hd);
+	zero_digit = proc_p_zero_digit(format, td, hd);
+	if (!format.flag_minus)
+		output_spaces(td - 2 - zero_digit - hd);
 	ft_putstr("0x");
-	if (format.precision != -1)
-		output_zeros(proc_zero_digit(format, td, hd));
+	output_zeros(zero_digit);
 	i = set_hex_str(decimal, hex_num, hex);
-	while (i-- > 0)
-		ft_putchar(hex[i]);
+	if (decimal == 0)
+	{
+		if (!(format.dot_only || format.precision == 0))
+			ft_putchar('0');
+	}
+	else
+	{
+		while (i-- > 0)
+			ft_putchar(hex[i]);
+	}
 	if (format.flag_minus)
-		output_spaces(td - proc_zero_digit(format, td, hd) - hd);
+		output_spaces(td - 2 - zero_digit - hd);
 	return (td);
 }
