@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 17:53:05 by fmai              #+#    #+#             */
-/*   Updated: 2021/04/02 09:03:06 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/03 11:32:48 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int			ft_proc_percent(char **fmt, va_list ap)
 		if (**fmt == '.')
 		{
 			(*fmt)++;
+			format.precision = 0;
 			proc_precision(fmt, &format, ap);
 		}
 		else
