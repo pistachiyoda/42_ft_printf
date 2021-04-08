@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 23:01:37 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/30 23:54:52 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/04 15:17:07 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int	output_string(t_format format, va_list ap)
 	int		total_digit;
 
 	input_str = (char *)va_arg(ap, char *);
-	if (format.dot_only)
-		input_str = "";
-	else if (!input_str)
+	if (!input_str)
 		input_str = "(null)";
 	str_digit = max_length((int)ft_strlen(input_str), format.precision);
 	total_digit = format.field >= str_digit ? format.field : str_digit;
@@ -37,7 +35,7 @@ int	output_string(t_format format, va_list ap)
 
 int	max_length(int input_str_len, int precision)
 {
-	if (precision < 0)
+	if (precision == -1)
 		return (input_str_len);
 	return (input_str_len < precision ? input_str_len : precision);
 }
