@@ -6,13 +6,14 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 22:59:13 by fmai              #+#    #+#             */
-/*   Updated: 2021/04/01 12:59:42 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/08 18:04:40 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <limits.h>
 
+#include <stdio.h>
 int		output_integer(t_format format, va_list ap)
 {
 	int input_num;
@@ -22,7 +23,7 @@ int		output_integer(t_format format, va_list ap)
 	int minus_digit;
 
 	input_num = va_arg(ap, int);
-	if ((format.precision == 0 || format.dot_only) && input_num == 0)
+	if (format.precision == 0 && input_num == 0)
 		return (proc_empty(format));
 	minus_digit = input_num < 0 ? 1 : 0;
 	decimal_digit = calc_decimal_digit(input_num);
