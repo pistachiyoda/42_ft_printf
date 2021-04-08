@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 15:21:12 by fmai              #+#    #+#             */
-/*   Updated: 2021/04/03 00:00:19 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/08 20:45:36 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	print_pointer_hex(
 	int		td;
 	int		zero_digit;
 
-	if ((format.precision == 0 || format.dot_only) && decimal == 0)
+	if (format.precision == 0 && decimal == 0)
 		hd = 0;
 	td = proc_p_total_digit(format, hd);
 	zero_digit = proc_p_zero_digit(format, td, hd);
