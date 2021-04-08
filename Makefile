@@ -11,6 +11,4 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 re: fclean all
-bonus: $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
 .PHONY: all clean fclean re bonus
