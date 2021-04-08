@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 19:17:28 by fmai              #+#    #+#             */
-/*   Updated: 2021/04/08 21:02:16 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/08 21:10:40 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct	s_format
 	int			flag_minus;
 	int			flag_zero;
 	int			field;
-	int			dot_only;
 	int			precision;
 	char		type;
 }				t_format;

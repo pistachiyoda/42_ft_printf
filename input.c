@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:46:48 by fmai              #+#    #+#             */
-/*   Updated: 2021/04/02 09:02:38 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/08 21:10:46 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,4 @@ void	proc_precision(char **fmt, t_format *format, va_list ap)
 		format->precision = va_arg(ap, int);
 		(*fmt)++;
 	}
-	else
-		format->dot_only = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 17:53:05 by fmai              #+#    #+#             */
-/*   Updated: 2021/04/03 11:32:48 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/08 21:10:34 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ t_format	init_format(void)
 	format.flag_minus = 0;
 	format.flag_zero = 0;
 	format.field = -1;
-	format.dot_only = 0;
 	format.precision = -1;
 	format.type = '\0';
 	return (format);
