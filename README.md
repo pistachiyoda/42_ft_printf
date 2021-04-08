@@ -1,6 +1,6 @@
 # 42_ft_printf
 
-## Description
+## 概要
 
 C言語のlibcライブラリのprintfを部分的に再実装したもの。
 
