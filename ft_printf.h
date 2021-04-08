@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 19:17:28 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/31 00:35:11 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/08 21:02:16 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int				output_hexadecimal(t_format format, va_list ap);
 int				print_hex(
 	t_format format, unsigned int decimal, int hex_digit, char *hex_num);
 int				print_pointer_hex(
-	t_format format, unsigned long long decimal, int digit, char *hex_num);
+	t_format format, unsigned long decimal, int digit, char *hex_num);
 int				ft_isdigit(int c);
 int				ft_atoi(const char *str);
 char			*ft_strchr(const char *s, int c);
@@ -67,9 +67,9 @@ int				proc_total_digit(t_format format, int hex_digit);
 int				proc_zero_digit(
 	t_format format, int total_digit, int hex_digit);
 int				proc_empty(t_format format);
-int				calc_hex_digit(unsigned long long decimal);
+int				calc_hex_digit(unsigned long decimal);
 int				set_hex_str(
-	unsigned long long decimal, char *hex_num, char *hex);
+	unsigned long decimal, char *hex_num, char *hex);
 int				max(int a, int b);
 int				output_percent(t_format format);
 int				output_u_integer(t_format format, va_list ap);

@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 15:21:12 by fmai              #+#    #+#             */
-/*   Updated: 2021/04/08 20:45:36 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/08 21:08:21 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	output_pointer(t_format format, va_list ap)
 {
-	unsigned long long	input_num;
-	char				*hex_num;
-	int					hex_digit;
-	unsigned long long	decimal;
+	unsigned long	input_num;
+	char			*hex_num;
+	int				hex_digit;
+	unsigned long	decimal;
 
-	input_num = (unsigned long long)va_arg(ap, unsigned long long);
+	input_num = (unsigned long)va_arg(ap, unsigned long);
 	hex_num = "0123456789abcdef";
 	decimal = input_num;
-	if (format.dot_only && decimal == 0)
+	if (format.precision == 0 && decimal == 0)
 		format.flag_zero = 0;
-	hex_digit = format.dot_only && decimal == 0 ? 0 : calc_hex_digit(decimal);
+	hex_digit = format.precision == 0 && decimal == 0 ? 0 : calc_hex_digit(decimal);
 	return (print_pointer_hex(format, input_num, hex_digit, hex_num));
 }
 
@@ -46,7 +46,7 @@ int	proc_p_zero_digit(t_format format, int total_digit, int hex_digit)
 }
 
 int	print_pointer_hex(
-	t_format format, unsigned long long decimal, int hd, char *hex_num
+	t_format format, unsigned long decimal, int hd, char *hex_num
 )
 {
 	char	hex[100];
@@ -63,7 +63,7 @@ int	print_pointer_hex(
 	ft_putstr("0x");
 	output_zeros(zero_digit);
 	i = set_hex_str(decimal, hex_num, hex);
-	if (decimal == 0 && !(format.dot_only || format.precision == 0))
+	if (decimal == 0 && format.precision != 0)
 		ft_putchar('0');
 	else if (decimal != 0)
 	{

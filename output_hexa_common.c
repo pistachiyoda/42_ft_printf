@@ -6,13 +6,13 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 20:09:43 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/26 20:09:56 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/08 21:03:18 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		calc_hex_digit(unsigned long long decimal)
+int		calc_hex_digit(unsigned long decimal)
 {
 	int hex_digit;
 
@@ -27,7 +27,7 @@ int		calc_hex_digit(unsigned long long decimal)
 	return (hex_digit);
 }
 
-int		set_hex_str(unsigned long long decimal, char *hex_num, char *hex)
+int		set_hex_str(unsigned long decimal, char *hex_num, char *hex)
 {
 	int		tmp;
 	int		i;
