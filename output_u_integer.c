@@ -6,7 +6,7 @@
 /*   By: fmai <fmai@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 22:59:13 by fmai              #+#    #+#             */
-/*   Updated: 2021/03/30 16:30:54 by fmai             ###   ########.fr       */
+/*   Updated: 2021/04/08 18:38:14 by fmai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		output_u_integer(t_format format, va_list ap)
 	int				zero_digit;
 
 	input_num = va_arg(ap, unsigned int);
-	if ((format.precision == 0 || format.dot_only) && input_num == 0)
+	if (format.precision == 0 && input_num == 0)
 		return (proc_empty(format));
 	decimal_digit = calc_u_decimal_digit(input_num);
 	total_digit = proc_total_digit(format, decimal_digit);
